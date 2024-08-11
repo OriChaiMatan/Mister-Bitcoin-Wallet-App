@@ -1,5 +1,11 @@
 <section class="home-page">
     <h1>Hello {{user.name}}!</h1>
-    <p><strong>Coins:</strong> {{ user.coins }}</p>
-    <p><strong>BTC:</strong> {{ bitcoinRate | number:'1.2-2' }} $</p>
+    <div class="coins">
+        <img src="assets/imgs/coins.png" alt="coins">
+        <p><strong>Coins:</strong> {{ user.coins }}</p>
+    </div>
+    <div class="btc">
+        <img src="assets/imgs/bitcoin.png" alt="btc">
+        <p><strong>BTC:</strong> {{ bitcoinRate | number:'1.2-2' }} $</p>
+    </div>
 </section>
