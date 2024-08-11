@@ -12,6 +12,7 @@ import { ContactListComponent } from './cmps/contact-list/contact-list.component
 import { ContactFilterComponent } from './cmps/contact-filter/contact-filter.component';
 import { ContactDetailsComponent } from './pages/contact-details/contact-details.component';
 import { StatisticPageComponent } from './pages/statistic-page/statistic-page.component';
+import { ChartComponent } from './cmps/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { StatisticPageComponent } from './pages/statistic-page/statistic-page.co
     ContactListComponent,
     ContactFilterComponent,
     ContactDetailsComponent,
-    StatisticPageComponent
+    StatisticPageComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
