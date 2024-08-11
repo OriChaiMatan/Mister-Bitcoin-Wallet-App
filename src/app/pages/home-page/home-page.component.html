@@ -1,1 +1,5 @@
-<p>home-page works!</p>
+<section class="home-page">
+    <h1>Hello {{user.name}}!</h1>
+    <p><strong>Coins:</strong> {{ user.coins }}</p>
+    <p><strong>BTC:</strong> {{ bitcoinRate | number:'1.2-2' }} $</p>
+</section>
