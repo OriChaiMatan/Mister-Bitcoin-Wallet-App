@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject, throwError, from, tap, retry, catchError } from 'rxjs';
-import { Contact } from '../models/contact.model'; 
+import { Observable, BehaviorSubject, throwError, from, tap, retry, catchError, take } from 'rxjs';
+import { Contact, ContactFilter } from '../models/contact.model'; 
 import { storageService } from './async-storage.service'; 
 import { HttpErrorResponse } from '@angular/common/http';
 const ENTITY = 'contacts'
@@ -14,6 +14,9 @@ export class ContactService {
 
     private _contacts$ = new BehaviorSubject<Contact[]>([])
     public contacts$ = this._contacts$.asObservable()
+
+    private _filterBy$ = new BehaviorSubject<ContactFilter>({ term: '' });
+    public filterBy$ = this._filterBy$.asObservable()
 
     constructor() {
         // Handling Demo Data, fetching from storage || saving to storage 
@@ -40,8 +43,8 @@ export class ContactService {
     }
 
     public getContactById(id: string): Observable<Contact> {
-        return from(storageService.get(ENTITY, id))
-            .pipe(catchError(err => throwError(() => `Contact id ${id} not found!`)))
+        return from(storageService.get<Contact>(ENTITY, id))
+            .pipe(catchError(this._handleError))
     }
 
     public deleteContact(id: string) {
@@ -67,6 +70,12 @@ export class ContactService {
             email: '',
             phone: ''
         }
+    }
+
+    public setFilterBy(filterBy: ContactFilter) {
+        console.log('setting new filter');
+        this._filterBy$.next(filterBy)
+        this.loadContacts().pipe(take(1)).subscribe()
     }
 
 

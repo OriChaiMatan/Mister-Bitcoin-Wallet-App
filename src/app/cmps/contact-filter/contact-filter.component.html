@@ -1,0 +1,9 @@
+<section [style.marginBlock.em]="1" class="contact-filter">
+	<input
+        [(ngModel)]="filterBy.term"
+        (ngModelChange)="onSetFilterBy($event)"
+        name="term"
+		type="text"
+		placeholder="Search"
+	/>
+</section>

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { ContactService } from '../services/contact.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'mister-bitcoin';
+  private contactService = inject(ContactService)
+    subscription!: Subscription
+    ngOnInit(): void {
+        this.subscription = this.contactService.loadContacts()
+            .subscribe({
+                error: err => console.log('err:', err)
+            })
+    }
+
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe()
+    }
 }
