@@ -30,12 +30,10 @@ export class ContactService {
         return from(storageService.query<Contact>(ENTITY))
             .pipe(
                 tap(contacts => {
-                    const filterBy = { term: '' }
-                    if (filterBy && filterBy.term) {
-                        contacts = this._filter(contacts, filterBy.term)
-                    }
-                    contacts = contacts.filter(contact => contact.name.toLowerCase().includes(filterBy.term.toLowerCase()))
-                    this._contacts$.next(this._sort(contacts))
+                    const filterBy = this._filterBy$.value
+                    const termRegex = new RegExp(filterBy.term, 'i')
+                    contacts = contacts.filter(contact => termRegex.test(contact.name))
+                    this._contacts$.next(contacts)
                 }),
                 retry(1),
                 catchError(this._handleError)
