@@ -21,6 +21,7 @@ export class UserService {
     //     };
     // }
 
+    // private _loggedInUser$ = new BehaviorSubject(null)
     private _loggedInUser$ = new BehaviorSubject(this.user)
     public loggedInUser$ = this._loggedInUser$.asObservable()
 
