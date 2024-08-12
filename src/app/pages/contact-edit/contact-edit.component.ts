@@ -18,9 +18,9 @@ export class ContactEditComponent implements OnInit {
   contact = this.contactService.getEmptyContact()
 
   ngOnInit(): void {
-    this.route.data.pipe(
-      map(data => data['contact']),
-      filter(contact => contact),
+    this.route.params.pipe(
+      filter(params => params['id']),
+      switchMap(params => this.contactService.getContactById(params['id'])),
     ).subscribe(contact => {
       this.contact = contact
     })
