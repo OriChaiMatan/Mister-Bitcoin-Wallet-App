@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
-import { BitcoinService } from '../../services/bitcoin.service'; 
+import { BitcoinService } from '../../services/bitcoin.service';
 
 @Component({
   selector: 'home-page',
@@ -9,22 +11,18 @@ import { BitcoinService } from '../../services/bitcoin.service';
 })
 export class HomePageComponent implements OnInit {
 
-  user: any; 
-  bitcoinRate: number = 0;
+  BTC!: string;
+  user!: User;
+  BTC$!: Observable<string>;
 
   constructor(
-    private userService: UserService,
-    private bitcoinService: BitcoinService
+    private bitcoinService: BitcoinService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.user = this.userService.getUser();
-    this.getBitcoinRate();
+    this.BTC$ = this.bitcoinService.getRateStream(this.user.coins);
   }
 
-  getBitcoinRate(): void {
-    this.bitcoinService.getRate(this.user.coins).subscribe(rate => {
-      this.bitcoinRate = rate;
-    });
-  }
 }

@@ -1,11 +1,6 @@
 <section class="home-page">
-    <h1>Hello {{user.name}}!</h1>
-    <div class="coins">
-        <img src="assets/imgs/coins.png" alt="coins">
-        <p><strong>Coins:</strong> {{ user.coins }}</p>
-    </div>
-    <div class="btc">
-        <img src="assets/imgs/bitcoin.png" alt="btc">
-        <p><strong>BTC:</strong> {{ bitcoinRate | number:'1.2-2' }} $</p>
-    </div>
+    <h1>Hello {{ user.name }}!</h1>
+    <h3>Coins: {{ user.coins }}</h3>
+    <h3>BTC: {{ BTC$ | async }}</h3>
+    <pre>{{ user | json }}</pre>
 </section>

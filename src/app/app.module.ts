@@ -29,7 +29,7 @@ import { ChartComponent } from './cmps/chart/chart.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
