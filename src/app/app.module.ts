@@ -15,6 +15,7 @@ import { StatisticPageComponent } from './pages/statistic-page/statistic-page.co
 import { ChartComponent } from './cmps/chart/chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AppHeaderComponent } from './cmps/app-header/app-header.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AppHeaderComponent } from './cmps/app-header/app-header.component';
     ContactDetailsComponent,
     StatisticPageComponent,
     ChartComponent,
-    AppHeaderComponent
+    AppHeaderComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
