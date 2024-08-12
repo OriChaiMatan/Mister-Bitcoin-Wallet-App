@@ -13,6 +13,7 @@ import { ContactFilterComponent } from './cmps/contact-filter/contact-filter.com
 import { ContactDetailsComponent } from './pages/contact-details/contact-details.component';
 import { StatisticPageComponent } from './pages/statistic-page/statistic-page.component';
 import { ChartComponent } from './cmps/chart/chart.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ChartComponent } from './cmps/chart/chart.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgxChartsModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
