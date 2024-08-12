@@ -17,6 +17,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AppHeaderComponent } from './cmps/app-header/app-header.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ContactEditComponent } from './pages/contact-edit/contact-edit.component';
+import { LoaderComponent } from './cmps/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ContactEditComponent } from './pages/contact-edit/contact-edit.componen
     ChartComponent,
     AppHeaderComponent,
     PageNotFoundComponent,
-    ContactEditComponent
+    ContactEditComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
