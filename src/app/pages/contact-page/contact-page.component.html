@@ -1,5 +1,8 @@
 <section class="contact-index">
     <contact-filter />
+    <p [style.margin-bottom.px]="10">
+        <a routerLink="/contact/edit">Add Contact</a>
+    </p>
     <contact-list [contacts]="contacts$ | async"/>
 </section>
-
+<router-outlet></router-outlet>
