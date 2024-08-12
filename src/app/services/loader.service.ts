@@ -11,9 +11,8 @@ export class LoaderService {
     public isLoading$ = this._isLoading$.asObservable()
 
     setIsLoading(isLoading:boolean) {
+        console.log('Loader status:', isLoading);
         this._isLoading$.next(isLoading)
     }
-
-    constructor() { }
 
 }

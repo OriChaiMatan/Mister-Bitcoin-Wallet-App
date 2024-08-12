@@ -4,7 +4,7 @@ import { LoaderService } from '../../services/loader.service';
 @Component({
   selector: 'loader',
   templateUrl: './loader.component.html',
-  styleUrl: './loader.component.scss'
+  styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent {
   isLoading$ = inject(LoaderService).isLoading$

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject  } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
 import { map, Observable, switchMap } from 'rxjs';
 import { Contact } from '../../models/contact.model';
 import { ContactService } from '../../services/contact.service';
@@ -21,15 +21,16 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
   contact$: Observable<Contact> = this.route.data.pipe(map(data => data['contact']))
 
   ngOnInit() {
-    this.contact$ = this.route.params.pipe(
-            switchMap(params => this.contactService.getContactById(params['id']))
-        )
-}
+    // this.contact$ = this.route.data.pipe(map(data => data['contact']))
+    // this.contact$ = this.route.params.pipe(
+    //         switchMap(params => this.contactService.getContactById(params['id']))
+    //     )
+  }
 
-onBack() {
-  this.router.navigateByUrl('/contact')
-}
+  onBack() {
+    this.router.navigateByUrl('/contact')
+  }
 
-ngOnDestroy(): void {
-}
+  ngOnDestroy(): void {
+  }
 }

@@ -7,15 +7,16 @@ import { ContactDetailsComponent } from './pages/contact-details/contact-details
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ContactEditComponent } from './pages/contact-edit/contact-edit.component';
 import { authGuard } from './guards/auth.guard';
+import { contactResolver } from './resolvers/contact.resolver';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'statistics', component: StatisticPageComponent },
   { path: 'contact', component: ContactPageComponent, children: [
     {path: 'edit', component: ContactEditComponent},
-    {path: 'edit/:id', component: ContactEditComponent} // add resolver
+    {path: 'edit/:id', component: ContactEditComponent, resolve: { contact: contactResolver }} 
   ]},
-  { path: 'contact/:id', component: ContactDetailsComponent, canActivate: [authGuard], },
+  { path: 'contact/:id', component: ContactDetailsComponent, canActivate: [authGuard],  resolve: { contact: contactResolver }},
   { path: '', pathMatch: 'full', redirectTo: 'home' },
     { path: '**', component: PageNotFoundComponent }
 ];
