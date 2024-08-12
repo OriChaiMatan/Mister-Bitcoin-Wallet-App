@@ -17,10 +17,16 @@ export class ContactEditComponent implements OnInit {
 
   contact = this.contactService.getEmptyContact()
 
+  isEditMode = false
+
   ngOnInit(): void {
     this.route.params.pipe(
-      filter(params => params['id']),
-      switchMap(params => this.contactService.getContactById(params['id'])),
+      map(params => params['id']),
+      filter(id => !!id), // Check if id exists
+      switchMap(id => {
+        this.isEditMode = true; // Set to edit mode if id exists
+        return this.contactService.getContactById(id);
+  }),
     ).subscribe(contact => {
       this.contact = contact
     })
@@ -34,5 +40,16 @@ export class ContactEditComponent implements OnInit {
         error: err => console.log('err:', err)
       })
   }
+
+  onDeleteContact() {
+    const id = this.route.snapshot.params['id']; // Get ID from route params
+    if (id) {
+      this.contactService.deleteContact(id).subscribe({
+        next: () => this.router.navigateByUrl('/contact'),
+        error: err => console.log('Error:', err)
+      });
+    }
+  }
+  
 
 }
