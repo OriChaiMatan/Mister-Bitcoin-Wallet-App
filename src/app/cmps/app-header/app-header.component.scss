@@ -1,0 +1,26 @@
+header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    background-color: #462db6;
+    color: whitesmoke;
+    margin-bottom: 30px;
+    font-size: 1.2em;
+
+    h1.logo {
+        flex-grow: 1;
+    }
+
+    nav {
+        a {
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+
+            &.active {
+                color: brown;
+                font-weight: bold;
+            }
+        }
+    }
+}
