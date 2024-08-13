@@ -2,5 +2,5 @@
     <h1>Hello {{ user.name }}!</h1>
     <h3>Coins: {{ user.coins }}</h3>
     <h3>BTC: {{ BTC$ | async }}</h3>
-    <pre>{{ user | json }}</pre>
+    <move-list [moves]="moves$ | async" />
 </section>

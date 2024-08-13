@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { BitcoinService } from '../../services/bitcoin.service';
 import { Router } from '@angular/router';
+import { Move } from '../../models/move.model';
 
 @Component({
   selector: 'home-page',
@@ -15,6 +16,7 @@ export class HomePageComponent implements OnInit {
   BTC!: string;
   user!: User;
   BTC$!: Observable<string>;
+  moves$: Observable<Move[]> = of([]);
 
   constructor(
     private bitcoinService: BitcoinService,
@@ -34,6 +36,7 @@ export class HomePageComponent implements OnInit {
 
   console.log(this.user);
   this.BTC$ = this.bitcoinService.getRateStream(this.user.coins);
+  this.moves$ = of(this.user.moves.slice(-5).reverse());
   }
 
 }
