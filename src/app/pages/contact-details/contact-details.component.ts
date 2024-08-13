@@ -4,6 +4,7 @@ import { Contact } from '../../models/contact.model';
 import { ContactService } from '../../services/contact.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { Move } from '../../models/move.model';
 
 @Component({
   selector: 'contact-details',
@@ -22,11 +23,13 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
 
   contact$: Observable<Contact> = this.route.data.pipe(map(data => data['contact']))
   userCoins: number = 0;
+  moves$ : any;
 
   ngOnInit() {
     this.userService.loggedInUser$.subscribe(user => {
       if (user) {
         this.userCoins = user.coins;
+        this.moves$ = user.moves;
       }
     });
   }

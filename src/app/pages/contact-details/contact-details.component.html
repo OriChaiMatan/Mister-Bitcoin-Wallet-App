@@ -10,5 +10,5 @@
     <a [routerLink]="['/contact', 'edit', contact._id]">Edit</a>
   </section>
   <transfer-fund [contact]="contact.name" [maxCoins]="userCoins" (onTransferCoins)="handleTransfer()"></transfer-fund>
-  <move-list></move-list>
+  <move-list [moves]="moves$" />
 </section>

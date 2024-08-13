@@ -1,1 +1,4 @@
-<move-preview></move-preview>
+<section class="move-list">
+    <p>Your Moves:</p>
+	<move-preview *ngFor="let move of moves" [move]="move" />
+</section>
