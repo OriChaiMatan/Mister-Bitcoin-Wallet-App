@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
-import { map, Observable, switchMap } from 'rxjs';
+import { map, Observable, of, switchMap } from 'rxjs';
 import { Contact } from '../../models/contact.model';
 import { ContactService } from '../../services/contact.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,13 +23,21 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
 
   contact$: Observable<Contact> = this.route.data.pipe(map(data => data['contact']))
   userCoins: number = 0;
-  moves$ : any;
+  moves$: Observable<Move[]> = of([]);
 
   ngOnInit() {
     this.userService.loggedInUser$.subscribe(user => {
       if (user) {
         this.userCoins = user.coins;
-        this.moves$ = user.moves;
+        this.moves$ = this.contact$.pipe(
+          map(contact => 
+            user.moves.filter(move => move.to === contact.name) // Filter by contact name
+          )
+        );
+      } else {
+        // Handle the case where user is null
+        this.userCoins = 0;
+        this.moves$ = of([]); // Use an empty array as a fallback
       }
     });
   }
