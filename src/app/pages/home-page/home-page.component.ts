@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { BitcoinService } from '../../services/bitcoin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'home-page',
@@ -17,12 +18,22 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private bitcoinService: BitcoinService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.user = this.userService.getUser();
-    this.BTC$ = this.bitcoinService.getRateStream(this.user.coins);
+    const user = this.userService.getUser(); 
+
+  if (!user) {
+    this.router.navigate(['/signup']);
+    return; 
+  }
+
+  this.user = user as User; // Assert that user is of type User
+
+  console.log(this.user);
+  this.BTC$ = this.bitcoinService.getRateStream(this.user.coins);
   }
 
 }

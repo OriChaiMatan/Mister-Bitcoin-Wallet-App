@@ -1,0 +1,9 @@
+<div>
+    <h2>Signup</h2>
+    <form (submit)="onSignup($event)">
+      <label for="name">Enter your name:</label>
+      <input id="name" type="text" [(ngModel)]="name" name="name" required />
+      <button type="submit">Sign Up</button>
+    </form>
+</div>
+

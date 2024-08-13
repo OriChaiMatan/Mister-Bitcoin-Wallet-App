@@ -8,9 +8,11 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { ContactEditComponent } from './pages/contact-edit/contact-edit.component';
 import { authGuard } from './guards/auth.guard';
 import { contactResolver } from './resolvers/contact.resolver';
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
+  { path: 'signup', component: SignupPageComponent },
   { path: 'statistics', component: StatisticPageComponent },
   { path: 'contact', component: ContactPageComponent, children: [
     {path: 'edit', component: ContactEditComponent},
