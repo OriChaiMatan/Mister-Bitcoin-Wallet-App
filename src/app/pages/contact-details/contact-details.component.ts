@@ -31,7 +31,7 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
         this.userCoins = user.coins;
         this.moves$ = this.contact$.pipe(
           map(contact => 
-            user.moves.filter(move => move.to === contact.name) // Filter by contact name
+            user.moves.filter(move => move.to === contact.name).reverse() // Filter by contact name
           )
         );
       } else {

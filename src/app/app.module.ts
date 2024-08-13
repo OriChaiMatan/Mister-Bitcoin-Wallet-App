@@ -23,6 +23,7 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { TransferFundComponent } from './cmps/transfer-fund/transfer-fund.component';
 import { MoveListComponent } from './cmps/move-list/move-list.component';
 import { MovePreviewComponent } from './cmps/move-preview/move-preview.component';
+import { MovesPageComponent } from './pages/moves-page/moves-page.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MovePreviewComponent } from './cmps/move-preview/move-preview.component
     TransferFundComponent,
     MoveListComponent,
     MovePreviewComponent,
+    MovesPageComponent,
   ],
   imports: [
     BrowserModule,

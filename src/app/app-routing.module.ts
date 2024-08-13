@@ -9,11 +9,13 @@ import { ContactEditComponent } from './pages/contact-edit/contact-edit.componen
 import { authGuard } from './guards/auth.guard';
 import { contactResolver } from './resolvers/contact.resolver';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { MovesPageComponent } from './pages/moves-page/moves-page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'signup', component: SignupPageComponent },
   { path: 'statistics', component: StatisticPageComponent },
+  { path: 'moves', component: MovesPageComponent },
   { path: 'contact', component: ContactPageComponent, children: [
     {path: 'edit', component: ContactEditComponent},
     {path: 'edit/:id', component: ContactEditComponent, resolve: { contact: contactResolver }} 
