@@ -9,13 +9,18 @@ export class UserService {
 
     private _loggedInUser$ = new BehaviorSubject<User | null>(null);
     public loggedInUser$ = this._loggedInUser$.asObservable();
-  
-    constructor() {
-      const savedUser = this.loadUser();
-      if (savedUser) {
-        this._loggedInUser$.next(savedUser);
-      }
+
+  constructor() {
+    // Load user from session storage or initialize as needed
+    const userData = sessionStorage.getItem('user');
+    if (userData) {
+      this._loggedInUser$.next(JSON.parse(userData));
     }
+  }
+
+  getUser(): User | null {
+    return this._loggedInUser$.value;
+  }
   
     signup(name: string) {
       const newUser: User = {
@@ -59,10 +64,6 @@ export class UserService {
         : localUserJson
         ? JSON.parse(localUserJson)
         : null;
-    }
-  
-    getUser(): User | null {
-      return this._loggedInUser$.value;
     }
   
     private generateId() {

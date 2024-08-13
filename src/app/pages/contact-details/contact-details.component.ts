@@ -33,4 +33,6 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
   }
+
+  
 }

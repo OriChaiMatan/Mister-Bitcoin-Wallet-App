@@ -35,7 +35,7 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
     PageNotFoundComponent,
     ContactEditComponent,
     LoaderComponent,
-    SignupPageComponent
+    SignupPageComponent,
   ],
   imports: [
     BrowserModule,
