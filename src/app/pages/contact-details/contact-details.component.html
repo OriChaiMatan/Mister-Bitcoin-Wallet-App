@@ -7,11 +7,8 @@
   </section>
   <section class="actions">
     <button (click)="onBack()" class="back-btn">Back</button>
-    <a [routerLink]="['/contact', 'edit', contact._id]" >Edit</a>
+    <a [routerLink]="['/contact', 'edit', contact._id]">Edit</a>
   </section>
-  <transfer-fund
-    [contact]="contact.name"
-    [maxCoins]="userCoins"
-    (onTransferCoins)="handleTransfer()"
-  ></transfer-fund>
+  <transfer-fund [contact]="contact.name" [maxCoins]="userCoins" (onTransferCoins)="handleTransfer()"></transfer-fund>
+  <move-list></move-list>
 </section>
