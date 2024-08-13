@@ -19,6 +19,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { ContactEditComponent } from './pages/contact-edit/contact-edit.component';
 import { LoaderComponent } from './cmps/loader/loader.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { TransferFundComponent } from './cmps/transfer-fund/transfer-fund.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
     ContactEditComponent,
     LoaderComponent,
     SignupPageComponent,
+    TransferFundComponent,
   ],
   imports: [
     BrowserModule,
