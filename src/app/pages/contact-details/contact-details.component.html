@@ -9,5 +9,9 @@
     <button (click)="onBack()" class="back-btn">Back</button>
     <a [routerLink]="['/contact', 'edit', contact._id]" >Edit</a>
   </section>
-  <transfer-fund></transfer-fund>
+  <transfer-fund
+    [contact]="contact.name"
+    [maxCoins]="userCoins"
+    (onTransferCoins)="handleTransfer()"
+  ></transfer-fund>
 </section>

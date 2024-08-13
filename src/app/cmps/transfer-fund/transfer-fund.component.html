@@ -1,1 +1,14 @@
-<p>transfer-fund works!</p>
+<form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+  
+    <div>
+      <label for="to">Transfer To: {{contact}}</label>
+    </div>
+  
+    <div>
+        <label for="amount">Amount:</label>
+        <input id="amount" formControlName="amount" type="number" step="0.01" />
+      </div>
+  
+    <button type="submit">Transfer</button>
+  </form>
+  
