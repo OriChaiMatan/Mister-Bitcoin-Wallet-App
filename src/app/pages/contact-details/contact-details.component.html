@@ -8,7 +8,9 @@
   <section class="actions">
     <button (click)="onBack()" class="back-btn">Back</button>
     <a [routerLink]="['/contact', 'edit', contact._id]">Edit</a>
+    <transfer-fund [contact]="contact.name" [maxCoins]="userCoins" (onTransferCoins)="handleTransfer()"></transfer-fund>
   </section>
-  <transfer-fund [contact]="contact.name" [maxCoins]="userCoins" (onTransferCoins)="handleTransfer()"></transfer-fund>
-  <move-list [moves]="moves$ | async" />
+  <div class="move-details">
+    <move-list [moves]="moves$ | async" />
+  </div>
 </section>
