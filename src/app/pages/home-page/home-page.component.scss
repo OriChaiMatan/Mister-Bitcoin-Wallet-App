@@ -1,5 +1,30 @@
-.home-page{
-    .user-info{
+.home-page {
+    .user-info {
         background-color: #2d2d2d;
+        padding: 1.25rem; // Padding: 20px equivalent
+        border-radius: 0.5rem; // Rounded corners: 8px equivalent
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); // Subtle shadow for depth
+        max-width: 37.5rem; // Max-width: 600px equivalent
+        margin: 1.25rem auto; // Center horizontally with margin: 20px equivalent
+        border: 0.05rem solid #ffffff;
+        
+
+        h1 {
+            font-size: 1.5rem; // Font size: 32px equivalent
+            margin-bottom: 0.625rem; // Margin-bottom: 10px equivalent
+        }
+
+        h2 {
+            font-size: 2rem; // Font size: 24px equivalent
+            margin: 0.625rem 0; // Margin: 10px equivalent
+            a {
+                color: #ffcc00; // Highlight color for user stats
+            }
+        }
+
+        h3 {
+            font-size: 1.2rem; // Font size: 19px equivalent
+            margin-top: 0.625rem; // Margin-top: 10px equivalent
+        }
     }
 }
