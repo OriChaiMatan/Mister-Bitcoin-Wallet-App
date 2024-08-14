@@ -13,32 +13,61 @@ interface Trade {
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit{
-  //test
-  saleData = [
-    { name: '11/23/2021', value: 494762556.34959996 },
-    { name: '11/24/2021', value: 480199475.88900006 },
-    { name: '11/25/2021', value: 332409438.7548 },
-    { name: '11/26/2021', value: 289094884.176 },
-    { name: '11/27/2021', value: 777492583.0165 },
-    { name: '11/28/2021', value: 277078998.492 },
-    { name: '11/29/2021', value: 252736299.37800002 },
-    { name: '11/30/2021', value: 367826530.49249995 },
-    { name: '12/1/2021', value: 522506214.22769994 },
-    { name: '12/2/2021', value: 479668944.2496 },
-    { name: '12/3/2021', value: 431885271.2832 }
-    // { name: "Mobiles", value: 105000 },
-    // { name: "Laptop", value: 55000 },
-    // { name: "AC", value: 15000 },
-    // { name: "Headset", value: 150000 },
-    // { name: "Fridge", value: 20000 }
-];
+  
+  lineChartData: any[] = [];
+  filteredData: any[] = [];
+  selectedRange: '7day' | 'month' | 'year' | 'five-years' | 'all' = 'all';
 
-trades$!: Observable<Trade>
-subscription: Subscription | undefined
+  constructor(private bitcoinService: BitcoinService) {}
 
-constructor(private bitcoinService: BitcoinService) { }
+  ngOnInit(): void {
+    this.bitcoinService.getBitcoinPriceHistory().subscribe(data => {
+      this.lineChartData = [
+        {
+          name: 'Bitcoin Price',
+          series: data
+        }
+      ];
+      this.filterData(); // Initial filter
+    });
+  }
 
-async ngOnInit(): Promise<void> {
-    this.trades$ = this.bitcoinService.getTradeVolume()
-}
+  setTimeRange(range: '7day' | 'month' | 'year' | 'five-years' | 'all') {
+    this.selectedRange = range;
+    this.filterData();
+  }
+
+  filterData() {
+    const now = new Date();
+    let startDate: Date;
+
+    switch (this.selectedRange) {
+      case '7day':
+        startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000); // Last 24 hours
+        break;
+      case 'month':
+        startDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+        break;
+      case 'year':
+        startDate = new Date(now.getFullYear(), 0, 1);
+        break;
+        case 'five-years':
+        startDate = new Date(now.getFullYear() - 5, now.getMonth(), now.getDate()); // Last 5 years
+        break;
+      case 'all':
+      default:
+        this.filteredData = this.lineChartData;
+        return;
+    }
+
+    this.filteredData = [
+      {
+        name: 'Bitcoin Price',
+        series: this.lineChartData[0].series.filter((dataPoint: any) => {
+          const dataDate = new Date(dataPoint.name);
+          return dataDate >= startDate;
+        })
+      }
+    ];
+  }
 }

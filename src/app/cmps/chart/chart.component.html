@@ -1,7 +1,18 @@
-<ngx-charts-bar-vertical [view]="[1000, 400]" [results]="trades$|async" [xAxisLabel]="'USD Exchange Trade Volume'"
-    [legendTitle]="'Day'" [yAxisLabel]="'Trade Volume (USD)'" [legend]="true" [showXAxisLabel]="true"
-    [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [gradient]="true">
-</ngx-charts-bar-vertical>
-<ngx-charts-pie-chart [results]="saleData" [legend]="false" [legendTitle]="'Product Sale Report'" [view]="[1000, 300]"
-    [labels]="true">
-</ngx-charts-pie-chart>
+<div class="filter-options">
+    <button (click)="setTimeRange('7day')">This week</button>
+    <button (click)="setTimeRange('month')">This Month</button>
+    <button (click)="setTimeRange('year')">This Year</button>
+    <button (click)="setTimeRange('five-years')">5 years</button>
+    <button (click)="setTimeRange('all')">All Time</button>
+  </div>
+  
+  <ngx-charts-line-chart
+    [view]="[1000, 400]"
+    [results]="filteredData"
+    [legend]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [autoScale]="true"
+    [timeline]="true">
+  </ngx-charts-line-chart>
+  

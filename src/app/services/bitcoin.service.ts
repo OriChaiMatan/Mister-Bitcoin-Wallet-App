@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, of, switchMap, timer  } from 'rxjs';
+import { map, Observable, of, switchMap, timer  } from 'rxjs';
 import { storageService } from './storage.service';
 
 @Injectable({
@@ -9,6 +9,8 @@ import { storageService } from './storage.service';
 export class BitcoinService {
 
   TRADE_VOLUME_KEY = 'tradeVolume'
+
+  BITCOIN_PRICE_HISTORY_KEY = 'bitcoinPriceHistory';
 
   constructor(private http: HttpClient) { }
 
@@ -34,6 +36,22 @@ export class BitcoinService {
               storageService.store(this.TRADE_VOLUME_KEY, vals)
               return vals
           }))
+  }
+
+  getBitcoinPriceHistory() {
+    const data = storageService.load(this.BITCOIN_PRICE_HISTORY_KEY);
+
+    if (data) return of(data);
+
+    return this.http.get<{ values: [{ x: number, y: number }] }>(`https://api.blockchain.info/charts/market-price?timespan=all&format=json&cors=true`)
+      .pipe(map(res => {
+        const formattedData = res.values.map(item => ({
+          name: new Date(item.x * 1000).toLocaleDateString("en-US"),  // Convert timestamp to date
+          value: item.y                                                // Price in USD
+        }));
+        storageService.store(this.BITCOIN_PRICE_HISTORY_KEY, formattedData);
+        return formattedData;
+      }));
   }
 
 }
