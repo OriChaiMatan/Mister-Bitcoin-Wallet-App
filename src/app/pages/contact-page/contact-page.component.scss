@@ -1,0 +1,14 @@
+.contact-index {
+    padding: 1rem;
+    background-color: #1f1f1f; // Light background color for the main section
+  
+    .add-contact {
+      margin-bottom: 1rem; // Space below the "Add Contact" link
+      a {
+        color: #007bff; // Link color
+        text-decoration: none; // Remove underline
+        font-size: 1rem;
+        font-weight: bold;
+      }
+    }
+}
