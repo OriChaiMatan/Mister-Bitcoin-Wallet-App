@@ -1,14 +1,16 @@
-<form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+<div class="form">
+  <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
   
-    <div>
+    <div class="form-group">
       <label for="to">Transfer To: {{contact}}</label>
     </div>
   
-    <div>
+    <div class="form-group">
         <label for="amount">Amount:</label>
         <input id="amount" formControlName="amount" type="number" step="0.01" />
       </div>
   
     <button type="submit">Transfer</button>
   </form>
+</div>
   
