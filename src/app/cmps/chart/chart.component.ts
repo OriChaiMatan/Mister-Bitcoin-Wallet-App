@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { BitcoinService } from '../../services/bitcoin.service';
 
@@ -12,13 +12,14 @@ interface Trade {
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
-export class ChartComponent implements OnInit{
-  
+export class ChartComponent implements OnInit {
+
   lineChartData: any[] = [];
   filteredData: any[] = [];
   selectedRange: '7day' | 'month' | 'year' | 'five-years' | 'all' = 'five-years';
+  chartView: [number, number] = [900, 400];
 
-  constructor(private bitcoinService: BitcoinService) {}
+  constructor(private bitcoinService: BitcoinService) { }
 
   ngOnInit(): void {
     this.bitcoinService.getBitcoinPriceHistory().subscribe(data => {
@@ -29,8 +30,15 @@ export class ChartComponent implements OnInit{
         }
       ];
       this.filterData(); // Initial filter
+      this.updateChartView();
     });
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.updateChartView();
+  }
+
 
   setTimeRange(range: '7day' | 'month' | 'year' | 'five-years' | 'all') {
     this.selectedRange = range;
@@ -51,7 +59,7 @@ export class ChartComponent implements OnInit{
       case 'year':
         startDate = new Date(now.getFullYear(), 0, 1);
         break;
-        case 'five-years':
+      case 'five-years':
         startDate = new Date(now.getFullYear() - 5, now.getMonth(), now.getDate()); // Last 5 years
         break;
       case 'all':
@@ -70,4 +78,12 @@ export class ChartComponent implements OnInit{
       }
     ];
   }
+
+  updateChartView(): void {
+    const width = window.innerWidth;
+    const height = 400; // Default height
+
+    this.chartView = [width / 2, height]; // Adjust width based on screen size
+  }
+
 }

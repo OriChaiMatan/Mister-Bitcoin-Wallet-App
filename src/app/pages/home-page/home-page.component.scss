@@ -27,4 +27,13 @@
             margin-top: 0.625rem; // Margin-top: 10px equivalent
         }
     }
+
+    .chart{
+        background-color: #1f1f1f;
+        padding: 1.25rem; // Padding: 20px equivalent
+        border-radius: 0.5rem; // Rounded corners: 8px equivalent
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); // Subtle shadow for depth
+        margin: 1.25rem auto; // Center horizontally with margin: 20px equivalent
+        border: 0.05rem solid #ffffff;
+    }
 }
