@@ -1,0 +1,32 @@
+.move-preview {
+    background-color: #1f1f1f;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    max-width: 30rem;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    gap: 0.25rem;
+  
+    p {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      color: whitesmoke;
+      line-height: 1.5;
+    }
+  
+    p:first-of-type {
+      font-weight: bold;
+    }
+  
+    p:nth-of-type(2) {
+      color: whitesmoke;
+    }
+  
+    p:last-of-type {
+      color: #ffcc00;
+    }
+  }
+  
