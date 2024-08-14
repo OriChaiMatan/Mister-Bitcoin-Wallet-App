@@ -1,7 +1,14 @@
 <section class="home-page">
-    <h1>Hello {{ user.name }}!</h1>
-    <h3>Coins: {{ user.coins }}</h3>
-    <h3>BTC: {{ BTC$ | async }}</h3>
-    <chart></chart>
-    <move-list [moves]="moves$ | async" />
+    <div class="user-info">
+        <h1>Hello {{ user.name }}!</h1>
+        <h2>Your Coins: {{ user.coins }}</h2>
+        <h2>Your BTC: {{ BTC$ | async }}</h2>
+        <h3>Current Bitcoin price: {{bitcoin}}</h3>
+    </div>
+    <div class="chart">
+        <chart></chart>
+    </div>
+    <div class="moves">
+        <move-list [moves]="moves$ | async" />
+    </div>
 </section>

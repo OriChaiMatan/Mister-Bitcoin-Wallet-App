@@ -17,6 +17,8 @@ export class HomePageComponent implements OnInit {
   user!: User;
   BTC$!: Observable<string>;
   moves$: Observable<Move[]> = of([]);
+  bitcoin: string = '';
+
 
   constructor(
     private bitcoinService: BitcoinService,
@@ -35,8 +37,21 @@ export class HomePageComponent implements OnInit {
   this.user = user as User; // Assert that user is of type User
 
   console.log(this.user);
+
+  this.bitcoinService.getBitcoinPrice().subscribe(
+    data => this.bitcoin = this.formatCurrency(data.bitcoin.usd),
+    error => console.error('Error fetching Bitcoin price', error)
+  );
+
   this.BTC$ = this.bitcoinService.getRateStream(this.user.coins);
   this.moves$ = of(this.user.moves.slice(-5).reverse());
+  }
+
+  private formatCurrency(value: number): string {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    }).format(value);
   }
 
 }

@@ -11,6 +11,7 @@ export class BitcoinService {
   TRADE_VOLUME_KEY = 'tradeVolume'
 
   BITCOIN_PRICE_HISTORY_KEY = 'bitcoinPriceHistory';
+  private apiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd';
 
   constructor(private http: HttpClient) { }
 
@@ -54,5 +55,8 @@ export class BitcoinService {
       }));
   }
 
+  getBitcoinPrice(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
+  }
 }
 
