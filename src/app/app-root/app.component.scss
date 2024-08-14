@@ -2,9 +2,12 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    color: #eeeeee;
+    background-color: #151515;
 
     main {
         flex-grow: 1;
+        background-color: #151515;
     }
 
     footer {
@@ -14,5 +17,6 @@
         color: whitesmoke;
         background-color: #151515;
         font-size: 1.2em;
+        border-top: 0.05rem solid #c8c8c8;
     }
 }

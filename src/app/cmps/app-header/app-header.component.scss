@@ -2,10 +2,10 @@ header {
     height: 80px;
     display: flex;
     align-items: center;
-    background-color: #462db6;
     color: whitesmoke;
     margin-bottom: 30px;
     font-size: 1.2em;
+    border-bottom: 0.05rem solid #c8c8c8;
 
     h1.logo {
         flex-grow: 1;
@@ -18,7 +18,7 @@ header {
             }
 
             &.active {
-                color: brown;
+                color: 	#cda804;
                 font-weight: bold;
             }
         }
