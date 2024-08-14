@@ -16,7 +16,7 @@ export class ChartComponent implements OnInit{
   
   lineChartData: any[] = [];
   filteredData: any[] = [];
-  selectedRange: '7day' | 'month' | 'year' | 'five-years' | 'all' = 'all';
+  selectedRange: '7day' | 'month' | 'year' | 'five-years' | 'all' = 'five-years';
 
   constructor(private bitcoinService: BitcoinService) {}
 
