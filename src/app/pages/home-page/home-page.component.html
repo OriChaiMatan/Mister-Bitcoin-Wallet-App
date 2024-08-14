@@ -2,7 +2,7 @@
     <div class="user-info">
         <h1>Hello {{ user.name }} !</h1>
         <h2>Your Coins: <a>{{ user.coins }}</a></h2>
-        <h2>Your BTC: <a>$ {{ BTC$ | async }}</a> </h2>
+        <h2>Your BTC: <a>${{ BTC$ | async }}</a> </h2>
         <h3>Current Bitcoin price: {{bitcoin}}</h3>
     </div>
     <div class="chart">

@@ -1,5 +1,16 @@
 .home-page {
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto; // Adjust rows to fit content
+    grid-template-areas:
+        "user-info chart"
+        "move chart";
+
+    gap: 1rem;
+
     .user-info {
+        grid-area: user-info;
         background-color: #1f1f1f;
         padding: 1.25rem; // Padding: 20px equivalent
         border-radius: 0.5rem; // Rounded corners: 8px equivalent
@@ -7,7 +18,7 @@
         max-width: 37.5rem; // Max-width: 600px equivalent
         margin: 1.25rem auto; // Center horizontally with margin: 20px equivalent
         border: 0.05rem solid #ffffff;
-        
+
 
         h1 {
             font-size: 1.5rem; // Font size: 32px equivalent
@@ -16,7 +27,8 @@
 
         h2 {
             font-size: 2rem; // Font size: 24px equivalent
-            margin: 0.625rem 0; // Margin: 10px equivalent
+            margin: 0.625rem; // Margin: 10px equivalent
+
             a {
                 color: #ffcc00; // Highlight color for user stats
             }
@@ -28,12 +40,21 @@
         }
     }
 
-    .chart{
+    .chart {
+        grid-area: chart;
         background-color: #1f1f1f;
         padding: 1.25rem; // Padding: 20px equivalent
         border-radius: 0.5rem; // Rounded corners: 8px equivalent
         box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); // Subtle shadow for depth
         margin: 1.25rem auto; // Center horizontally with margin: 20px equivalent
         border: 0.05rem solid #ffffff;
+    }
+
+    .moves {
+        grid-area: move;
+        padding: 1.25rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+        max-width: 37.5rem;
     }
 }
