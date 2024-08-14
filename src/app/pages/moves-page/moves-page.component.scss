@@ -1,0 +1,14 @@
+.moves-page{
+    grid-area: move;
+    padding: 1.25rem;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #1f1f1f;
+    border-radius: 0.5rem;
+    border: 0.05rem solid #ffffff;
+    // Center the content of the grid container
+    display: grid;
+    align-items: center; // Center content vertically if there's more than one row
+    justify-items: center; // Center content horizontally within each grid cell
+
+}

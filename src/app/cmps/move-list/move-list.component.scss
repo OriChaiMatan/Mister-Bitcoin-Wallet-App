@@ -1,26 +1,4 @@
 .move-list {
-    display: grid;
-    gap: 1rem;
-    padding: 1rem;
-    background-color: #1f1f1f;
-    border-radius: 0.5rem;
-    border: 0.05rem solid #ffffff;
-    max-height: 40vh; // Adjust based on your needs
-    overflow-y: auto;
-    
-    // Center the text inside the <p> element
-    p {
-      grid-column: 1 / -1; // Span across all columns
-      font-size: 1.25rem;
-      font-weight: bold;
-      color: whitesmoke;
-      margin-bottom: 1rem;
-      text-align: center; // Center text horizontally
-    }
-    
-    // Center the content of the grid container
-    display: grid;
-    align-items: center; // Center content vertically if there's more than one row
-    justify-items: center; // Center content horizontally within each grid cell
+    border-bottom: 0.5rem;
   }
   

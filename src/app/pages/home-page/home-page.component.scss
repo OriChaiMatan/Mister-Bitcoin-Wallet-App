@@ -56,5 +56,27 @@
         border-radius: 0.5rem;
         box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
         max-width: 37.5rem;
+        max-height: 40vh; // Adjust based on your needs
+        overflow-y: auto;
+        display: grid;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: #1f1f1f;
+        border-radius: 0.5rem;
+        border: 0.05rem solid #ffffff;
+        // Center the content of the grid container
+        display: grid;
+        align-items: center; // Center content vertically if there's more than one row
+        justify-items: center; // Center content horizontally within each grid cell
+
+        // Center the text inside the <p> element
+        p {
+            grid-column: 1 / -1; // Span across all columns
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: whitesmoke;
+            margin-bottom: 1rem;
+            text-align: center; // Center text horizontally
+        }
     }
 }
