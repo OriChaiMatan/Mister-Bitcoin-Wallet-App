@@ -1,11 +1,10 @@
-.contact-info {
-    display: grid;
-    grid-template-columns: auto 1fr; // Image and name side by side
+.info {
+    display: flex;
     align-items: center; // Center items vertically
     padding: 1rem;
     border: 1px solid #ddd;
     border-radius: 0.5rem;
-    background-color: #fff;
+    background-color: #151515;
     margin-bottom: 1rem; // Space between contacts
   
     img {
@@ -19,7 +18,7 @@
       p {
         margin: 0;
         font-size: 1rem;
-        color: #333;
+        color: #cda804;
       }
     }
   }
