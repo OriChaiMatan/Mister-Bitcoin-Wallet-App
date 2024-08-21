@@ -31,7 +31,7 @@ The project demonstrates concepts such as Angular services, routing, components,
  ## Installation
 1. Clone the repository:
    ```bash
-   https://github.com/OriChaiMatan/Mister-Bitcoin-Wallet-App.git
+   https://github.com/OriChaiMatan/Mister-Bitcoin-Wallet-App-Angular.git
 
 2. Install dependencies:
    ```bash
