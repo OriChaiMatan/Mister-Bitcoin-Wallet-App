@@ -1,7 +1,7 @@
 # MisterBitcoin
 
 ## Project Overview
-Mister-BITCoin is a digital wallet application built with Angular that allows users to manage their Bitcoin balance and send (fake) transactions to contacts. This frontend-only app simulates a wallet where the user’s balance is reduced when they transfer Bitcoin to contacts, although no real funds are involved.
+Mister-BITCoin is a digital wallet application built with Angular. This app allows users to manage their Bitcoin balance and send (fake) transactions to contacts. This frontend-only app simulates a wallet where the user’s balance is reduced when they transfer Bitcoin to contacts, although no real funds are involved.
 
 The project demonstrates concepts such as Angular services, routing, components, CRUDL operations, and data fetching from external APIs to render charts.
 
